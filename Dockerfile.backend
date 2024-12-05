@@ -32,9 +32,7 @@ WORKDIR /var/www/html/Backend
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Configurar permisos para Symfony
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/var \
-    && chmod -R 775 /var/www/html/public
+RUN chown -R www-data:www-data /var/www/html
 
 # Exponer el puerto 80 (el puerto estándar para HTTP)
 EXPOSE 80
