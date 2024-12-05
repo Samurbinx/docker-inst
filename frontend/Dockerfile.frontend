@@ -1,7 +1,7 @@
-FROM node:18
+FROM node:18 
 
-# Crea el directorio explícitamente
-RUN touch /verify.txt
+WORKDIR /app
+COPY . /app
 
 # Actualiza el sistema e instala git
 RUN apt-get update && apt-get install -y git
@@ -15,11 +15,12 @@ RUN npm install . && npm install -g @angular/cli && ls -la
 # Construye el proyecto y verifica la salida
 RUN ng build && ls -la dist
 
+
 # Stage 2: Serve Angular app with Nginx
 FROM nginx:alpine
 
-# COPY --from=builder /app/Frontend/nginx.conf /etc/nginx/conf.d/default.conf
-# COPY --from=builder /app/Frontend/dist/frontend/browser /usr/share/nginx/html
+COPY --from=builder /app/Frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/Frontend/dist/frontend/browser /usr/share/nginx/html
 
 EXPOSE 80
 
