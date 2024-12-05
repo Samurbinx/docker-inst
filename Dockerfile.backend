@@ -26,6 +26,8 @@ WORKDIR /var/www/html
 # Clonar el repositorio del backend
 RUN git clone https://github.com/Samurbinx/Backend.git
 
+WORKDIR /var/www/html/Backend
+
 # Instalar las dependencias de Symfony usando Composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
