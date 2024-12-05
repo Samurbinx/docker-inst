@@ -1,7 +1,7 @@
 FROM node:18 AS builder
 
 # Crea el directorio explícitamente
-RUN mkdir -p /app
+RUN mkdir -p /app && touch /app/verify.txt
 WORKDIR /app
 
 # Actualiza el sistema e instala git
