@@ -7,8 +7,7 @@ WORKDIR /app
 
 # Clone frontend repo
 RUN git clone https://github.com/Samurbinx/Frontend.git . \
-   && npm install . \
-   && npm build
+   && npm install . && npm run build
 
 
 # Stage 2: Serve Angular app with Nginx
