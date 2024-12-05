@@ -1,14 +1,14 @@
 # Stage 1: Build Angular app
 FROM node:18 AS builder
 
-RUN sudo apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git
 
 WORKDIR /app
 
 # Clone frontend repo
-RUN sudo git clone https://github.com/Samurbinx/Frontend.git . \
-   && sudo npm install . \
-   && sudo npm build
+RUN git clone https://github.com/Samurbinx/Frontend.git . \
+   && npm install . \
+   && npm build
 
 
 # Stage 2: Serve Angular app with Nginx
