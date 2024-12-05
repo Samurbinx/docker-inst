@@ -1,6 +1,7 @@
 FROM node:18 AS builder
 
-
+# Crea el directorio explícitamente
+RUN touch /verify.txt
 
 # Actualiza el sistema e instala git
 RUN apt-get update && apt-get install -y git
