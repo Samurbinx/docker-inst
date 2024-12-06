@@ -33,8 +33,7 @@ WORKDIR /var/www/html/Backend
 RUN cp ./apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Habilitar el sitio y reiniciar Apache
-RUN a2ensite 000-default.conf \
-    && systemctl restart apache2
+RUN a2ensite 000-default.conf
     
 # Instalar las dependencias de Symfony usando Composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
