@@ -29,7 +29,7 @@ RUN git clone https://github.com/Samurbinx/Backend.git
 WORKDIR /var/www/html/Backend
 
 # Copiar el archivo de configuración del VirtualHost
-COPY /var/www/html/Backend/apache.conf /etc/apache2/sites-available/000-default.conf
+COPY /Backend/apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Habilitar el sitio y reiniciar Apache
 RUN a2ensite 000-default.conf \
