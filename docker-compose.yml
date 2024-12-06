@@ -49,4 +49,6 @@ volumes:
 
 networks:
   app-network:
+    external: true
+    name: docker-inst_app-network
     driver: bridge
