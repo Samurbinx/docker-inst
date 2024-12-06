@@ -29,7 +29,7 @@ services:
   # Base de datos: Contenedor MySQL
   db:
     image: mysql:8
-    container_name: database
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: aesma   
       MYSQL_DATABASE: portfolio           
