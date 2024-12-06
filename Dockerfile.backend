@@ -35,6 +35,7 @@ RUN cp ./apache.conf /etc/apache2/sites-available/000-default.conf
 # Habilitar el sitio y reiniciar Apache
 RUN a2ensite 000-default.conf
     
+ENV DATABASE_URL=mysql://aesma:aesma@db:3306/portfolio 
 # Instalar las dependencias de Symfony usando Composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
