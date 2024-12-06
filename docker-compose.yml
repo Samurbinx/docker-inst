@@ -20,7 +20,7 @@ services:
       - "8080:80" 
     environment:
       - APP_ENV=prod
-      - DATABASE_URL=mysql://aesma:aesma@db:3306/portfolio 
+      - DATABASE_URL=mysql://root:aesma@db:3306/portfolio 
     depends_on:
       - db 
     networks:
@@ -43,21 +43,6 @@ services:
       - "3306:3306"  
     networks:
       - app-network                      
-
-# PhpMyAdmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: db         
-      PMA_PORT: 3306       
-      MYSQL_ROOT_PASSWORD: aesma  
-    ports:
-      - "8081:80" 
-    networks:
-      - app-network
-    depends_on:
-      - db
 
 # Volúmenes para persistencia de datos de MySQL
 volumes:
