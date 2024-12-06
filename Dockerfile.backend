@@ -26,17 +26,15 @@ WORKDIR /var/www/html
 # Clonar el repositorio del backend
 RUN git clone https://github.com/Samurbinx/Backend.git
 
-WORKDIR /var/www/html/Backend
+Copiar el archivo de configuración del VirtualHost
+COPY /Backend/apache.conf /etc/apache2/sites-available/000-default.conf
 
-# Copiar el archivo de configuración del VirtualHost
-# COPY /Backend/apache.conf /etc/apache2/sites-available/000-default.conf
-
-# # Habilitar el sitio y reiniciar Apache
-# RUN a2ensite 000-default.conf \
-#     && systemctl restart apache2
+# Habilitar el sitio y reiniciar Apache
+RUN a2ensite 000-default.conf \
+    && systemctl restart apache2
     
-# # Instalar las dependencias de Symfony usando Composer
-# RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# Instalar las dependencias de Symfony usando Composer
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Configurar permisos para Symfony
 RUN chown -R www-data:www-data /var/www/html
