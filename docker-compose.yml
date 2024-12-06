@@ -20,7 +20,7 @@ services:
       - "8080:80" 
     environment:
       - APP_ENV=prod
-      - DATABASE_URL=mysql://root:aesma@db:3306/portfolio 
+      - DATABASE_URL=mysql://aesma:aesma@db:3306/portfolio 
     depends_on:
       - db 
     networks:
@@ -35,7 +35,6 @@ services:
       MYSQL_DATABASE: portfolio           
       MYSQL_USER: aesma                    
       MYSQL_PASSWORD: aesma        
-      MYSQL_ROOT_HOST: '%' 
     volumes:
       - db_data:/var/lib/mysql             # Persistencia de datos de la base de datos
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
