@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Obtener la IP dinámica de la máquina
-IP=$(hostname -I | awk '{print $1}')
+IP=$(nslookup host.docker.internal | awk '/^Address: / { print $2 }')
 
 # Reemplazar la IP en los archivos del proyecto
 find . -type f -exec sed -i "s/192.168.1.135/$IP/g" {} +
