@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Obtener la IP dinámica de la máquina
-IP=$(hostname -I | awk '{print $1}')
+IP=$(ip -4 addr show enp0s3 | grep inet | awk '{print $2}' | cut -d '/' -f 1)
 
 # Reemplazar la IP en los archivos del proyecto
 find . -type f -exec sed -i "s/192.168.1.135/$IP/g" {} +
