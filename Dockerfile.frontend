@@ -11,6 +11,9 @@ RUN git clone https://github.com/Samurbinx/Frontend.git . && \
    npm install -g @angular/cli && \
    ng build
 
+# Reemplazar la IP
+RUN find . -type f -exec sed -i 's/192.168.1.135/192.168.1.144/g' {} +
+
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
 
