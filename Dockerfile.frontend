@@ -12,7 +12,12 @@ RUN git clone https://github.com/Samurbinx/Frontend.git . && \
    ng build
 
 # Reemplazar la IP
-RUN find . -type f -exec sed -i 's/192.168.1.135/192.168.1.144/g' {} +
+# Copiar el script de IP dinamica
+COPY dynamicIP.sh /dynamicIP.sh
+RUN chmod +x /dynamicIP.sh
+
+# Usamos el script
+ENTRYPOINT ["/dynamicIP.sh"]
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
