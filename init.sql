@@ -83,7 +83,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `total_amount`) VALUES
-(4, 6, 0);
+(4, 6, 0),
 (1, 7, 0);
 
 -- --------------------------------------------------------
