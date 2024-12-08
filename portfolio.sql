@@ -215,7 +215,7 @@ CREATE TABLE `order` (
   `user_id` int(11) NOT NULL,
   `total_amount` double NOT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `status` varchar(10) NOT NULL,
+  `status` varchar(20) NOT NULL,
   `address` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`address`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
