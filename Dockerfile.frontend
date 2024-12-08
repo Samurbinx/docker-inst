@@ -13,7 +13,7 @@ RUN git clone https://github.com/Samurbinx/Frontend.git . && \
 
 WORKDIR /
 ARG HOST_IP
-RUN echo "HOST_IP is $HOST_IP"   # Para depurar y verificar que se pasa correctamente
+RUN echo "HOST_IP is $HOST_IP"   
 RUN find . -type f -exec sed -i "s/192.168.1.135/$HOST_IP/g" {} +
 
 # Etapa 2: Servir la aplicación con Nginx
