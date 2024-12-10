@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2024 a las 19:35:13
+-- Tiempo de generación: 10-12-2024 a las 19:35:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `portfolio`
 --
-CREATE DATABASE IF NOT EXISTS portfolio;
-USE portfolio;
 
 -- --------------------------------------------------------
 
@@ -47,11 +45,7 @@ CREATE TABLE `address` (
 
 INSERT INTO `address` (`id`, `street`, `details`, `zip_code`, `city`, `province`, `user_id`, `recipient`, `phone`) VALUES
 (7, 'Calle José Gil Sánchez', 'Bloque 2, 1º A', '11100', 'San Fernando', 'Cádiz', 11, 'Samuel Urbina Flor', '+34 6229387439'),
-(8, 'Camino del aguacate', '21 A', '11100', 'Chiclana', 'Cádiz', 11, 'Alejandra Quirós Creo', '+34 345869345'),
-(26, 'calle san marcos', '23', '11200', 'Sanfernando', 'Cadiz', 2, 'Ana maria estrada', '+34 622039286'),
-(28, 'Mi casa ', '3º, D', '54232', 'Marbella', 'Málaga', 11, 'Alba Sánchez', '534256232341'),
-(30, 'Calle José Gil Sánchez', 'Calle José Gil Sánchez', '11100', 'Cadiz', 'CÁDIZ', 2, 'Otra', '622039286'),
-(33, 'Calle José Gil Sánchez', 'Calle José Gil Sánchez', '11100', 'Cadiz', 'CÁDIZ', 2, 'fsd', '622039286');
+(8, 'Camino del aguacate', '21 A', '11100', 'Chiclana', 'Cádiz', 11, 'Alejandra Quirós Creo', '+34 345869345');
 
 -- --------------------------------------------------------
 
@@ -125,9 +119,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `total_amount`) VALUES
-(3, 2, 171),
 (4, 6, 0),
-(5, 5, 0),
 (7, 11, 167);
 
 -- --------------------------------------------------------
@@ -143,15 +135,6 @@ CREATE TABLE `cart_artwork` (
   `selected` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `cart_artwork`
---
-
-INSERT INTO `cart_artwork` (`id`, `cart_id`, `artwork_id`, `selected`) VALUES
-(259, 7, 7, 0),
-(260, 7, 5, 1),
-(280, 3, 10, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -162,15 +145,6 @@ CREATE TABLE `favorites` (
   `user_id` int(11) NOT NULL,
   `artwork_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `favorites`
---
-
-INSERT INTO `favorites` (`user_id`, `artwork_id`) VALUES
-(2, 1),
-(11, 1),
-(11, 2);
 
 -- --------------------------------------------------------
 
@@ -199,10 +173,7 @@ INSERT INTO `materials` (`id`, `name`) VALUES
 (118, 'Grafito'),
 (119, 'Betadine'),
 (120, 'Madera'),
-(121, 'Cinta'),
-(122, 'Sa'),
-(123, 'Hola'),
-(124, 'Nuevo');
+(121, 'Cinta');
 
 -- --------------------------------------------------------
 
@@ -404,9 +375,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `surname`, `nick`, `phone`, `roles`, `token`, `is_valid_t`, `address_id`) VALUES
-(2, 'samuelurbinaflor@gmail.com', '$2y$13$AVaoXV3jpFMSdas6ik97ZeOWO.pqmJ6kL1d0Qph0iwqcX.a1z0WTi', 'prueba', 'prueba', 'prueba', '987987987', '[]', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzMwNzQ5NTEsImV4cCI6MTczMzA3ODU1MSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InBydWViYUBnbWFpbC5jb20ifQ.HkIKMWGG5GkY4yTY4oLlm_tDCtSv4boN-_-iP-8DcHDb08etzSGgkP1mq9qG8v9eibwF7e5_KZhII_8r2uZiwIqd40WS4uR2_AYu4xNFNv8kzwgzTcrY_aYOHOYX-EIUPjdDlrnW7ddDOuMPMDw_kixlwv1ZMBPAXz6LH1MZNsbwsUcSGN4_uybq-9OaoJMl6Z9Ktc9xIlnYkhTMzpijw12Yg0JD0G58qU_0mIbdjIrix2oTYUPlNXXb4rBaf8D5YH8tU9DXIUoE9PO0xhi_LvHTVkblz3GeBUVjy9EvVbrkEzAtUjDSeERYu-xisymi2QhP9NfSyNG5vXm3_9n_PA', 1, 26),
-(5, 'movil@gmail.com', '$2y$13$dW25L8AbI4EKqj4ACEJEt.xYv/XElATxiATq8b6OJBmkS5voneuh6', 'Movil', 'Movil', 'movilmovil', '31298998', '[]', NULL, NULL, NULL),
 (6, 'aesmart@gmail.com', '$2y$13$G3LhGcHSX8jP2IeyEnlYiem6TdPdWBAKDrHVvNZxkg3vasH9DzrdW', 'AESMART', 'Administración', 'AESMART', '622039221', '[\"ROLE_ADMIN\"]', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzEzNDU5NjAsImV4cCI6MTczMTM0OTU2MCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFlc21hcnRAZ21haWwuY29tIn0.h2qyyNg-6k4gTMh_oCkF3elzM3tNRfz1tCaZjPi-lh1ZMswOWz_uNJjao-_aHws4F7hg2cmJ02yFD4Hr4TdGpqWGROjWetrD-8CV6V7Q-Zs0wqcMRXEHM_r5rxWeNYhIpVEMYIZWRlWpOMPlKlCNBw-X4ty2xhkYv_eMe3EZfOuiFVpThXpabATNbbOPN-Drp2A5n6TBmuxQUp6_v8WIZd7wEAjgWsQfZvbSQeV5xcltgF2Nmz6mmB3K118IR-wru9GpMNaCYX_L18qvNBa3P0Nf5GCQU9Kv021C3jwI3N5Qx7j52-Fn3kPb66QguaIeguaDDRyU3lbmjdfbLO_dqg', 1, NULL),
+(7, 'profesores@gmail.com', '$2y$13$G3LhGcHSX8jP2IeyEnlYiem6TdPdWBAKDrHVvNZxkg3vasH9DzrdW', 'Profesores', 'Profesores', 'Profesores', '622039221', '[\"ROLE_ADMIN\"]', '', 1, NULL),
 (11, 'samurbinx@gmail.com', '$2y$13$ClAT30knDKxkRNNMZS4Ek.J2tpufBddTguT3hBumB4XM7YXJyrQsW', 'Samuel', 'Urbina Flor', 'Samuel', '622039286', '[\"ROLE_ADMIN\"]', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzI5NzI3MzgsImV4cCI6MTczMjk3NjMzOCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6InNhbXVyYmlueEBnbWFpbC5jb20ifQ.g9elKBppVMcd4osTyDJVzNEdI1kPcERYPlMuQt_nWwQPS2XYmhJ314yfsBj0ArHm6R2H73XWUSQkaKQiszj0fq46uNTC4e8dtRI-HczSDr_5jyRG_X6y1IPli9GF8Q2Gtb1H5EHZhiZDS-uNnE4Y_y0buMdb-kiuwAlbwaj-NP0ckvZlyPZ0sEVlBIVbfk0AbR54r0sGi6T5cq1q-rwb7cmxhwZiGgVcDehBusmIpjldT8nGC5SdQrMCq_zUVxd4ekpnT06qXieYUUso8Ykume7jS2xtcy6HZEQvQbgi8CAE0ymOtIhiiUuOojDK7Tv0k5HbBmw3M983-p45YnBpcQ', 1, 7);
 
 -- --------------------------------------------------------
@@ -553,7 +523,7 @@ ALTER TABLE `cart`
 ALTER TABLE `cart_artwork`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
-
+--
 -- AUTO_INCREMENT de la tabla `materials`
 --
 ALTER TABLE `materials`
